@@ -24,7 +24,7 @@ If you are setting up Horcrux from scratch, see the [Installation and Usage Guid
 - Existing validator node running and in sync
 - 3 new VPS/servers provisioned for cosigner nodes
 - 1 additional sentry node (to reach 3 total)
-- Horcrux installed on all 3 cosigner nodes — see [Installation and Usage Guide](./installation-guide.md)
+- Horcrux installed on all 3 cosigner nodes, see [Installation and Usage Guide](./installation-guide.md)
 
 ---
 
@@ -218,10 +218,10 @@ sudo journalctl -u <chain-noded> -f
 ## ✅ Verification
 
 ```bash
-# Horcrux logs — look for sign confirmations across all cosigners
+# Horcrux logs  look for sign confirmations across all cosigners
 sudo journalctl -u horcrux -f | grep -E "(sign|error|connected)"
 
-# Validator state — height should increase with each block
+# Validator state  height should increase with each block
 cat ~/.horcrux/state/<chain-id>_priv_validator_state.json
 ```
 
