@@ -1,24 +1,63 @@
-# Horcrux-Architecture
-![image](https://github.com/Cumulo-pro/Horcrux-Architecture/assets/2853158/0be621fc-094d-44ee-b194-305568cbc9e5)
+# cumulo-horcrux
 
+Horcrux threshold signing architecture, deployment guides, and Grafana metrics dashboard for Cumulo's CometBFT validators.
 
-## Enhancing Security and Availability in CometBFT Environments with Multi-Party Computation
+<!-- imagen: arquitectura general Cumulo Horcrux -->
 
-Horcrux Architecture approach for running Cosmos nodes
+## What is Horcrux?
 
-Horcrux is a multi-party-computation (MPC) signing service for CometBFT nodes. It enhances security and availability by distributing private keys among multiple nodes, thereby preventing double signing and improving performance. The project also introduces Raft for leader election and consensus. In summary, Horcrux is a tool that elevates the security and availability of validation infrastructure in CometBFT environments.
+Horcrux is a multi-party-computation (MPC) signing service for CometBFT nodes. It enhances security and availability by distributing the validator private key among multiple cosigner nodes using Shamir's Secret Sharing, thereby preventing double signing and eliminating single points of failure. The project uses Raft for leader election and consensus among cosigners.
 
-[![Horcrux Installation and Usage Guide](https://img.shields.io/badge/-Horcrux%20Installation%20and%20Usage%20Guide-blue?style=for-the-badge)](https://github.com/Cumulo-pro/Horcrux-Architecture/wiki/Horcrux-Installation-and-Usage-Guide)  
+Cumulo runs a **2-of-3 threshold signing** setup across three independent cosigner nodes on separate providers, signing multiple chains from a single Horcrux cluster.
 
-[![Modify an existing Horcrux architecture](https://img.shields.io/badge/-Modify%20an%20existing%20Horcrux%20architecture-blue?style=for-the-badge)](https://github.com/Cumulo-pro/Horcrux-Architecture/wiki/Modify-an-existing-Horcrux-architecture)  
++info https://github.com/strangelove-ventures/horcrux
 
-[![METRICS from Cumulo Horcrux Dashboard](https://img.shields.io/badge/-Horcrux%20Metrics%20with%20Grafana%20&%20Prometheus-blue?style=for-the-badge)](https://github.com/Cumulo-pro/Horcrux-Architecture/wiki/Horcrux-metrics-with-Grafana-&-Prometheus)  
+---
 
-[![METRICS from Cumulo Horcrux Dashboard](https://img.shields.io/badge/-METRICS%20from%20Cumulo%20Horcrux%20Dashboard-blue?style=for-the-badge)](https://github.com/Cumulo-pro/Horcrux-Architecture/wiki/METRICS--from-Cumulo-Horcrux-Dashboard)
+## Documentation
 
-[![Horcrux Useful Commands](https://img.shields.io/badge/-Horcrux%20Useful%20Commands-blue?style=for-the-badge)](https://github.com/Cumulo-pro/Horcrux-Architecture/wiki/Horcrux-Useful-Commands)  
+[![Horcrux Installation and Usage Guide](https://img.shields.io/badge/-Horcrux%20Installation%20and%20Usage%20Guide-FFA500?style=for-the-badge&labelColor=321A0C&logoColor=white)](docs/installation-guide.md)
 
+[![Modify an existing Horcrux architecture](https://img.shields.io/badge/-Modify%20an%20existing%20Horcrux%20architecture-FFA500?style=for-the-badge&labelColor=321A0C&logoColor=white)](docs/modify-architecture.md)
 
+[![Adding a chain to an existing multi-chain setup](https://img.shields.io/badge/-Adding%20a%20chain%20to%20an%20existing%20multi--chain%20setup-FFA500?style=for-the-badge&labelColor=321A0C&logoColor=white)](docs/add-chain-multichain.md)
 
-![index](https://github.com/Cumulo-pro/Horcrux-Architecture/assets/2853158/7adbfb29-c39d-4e88-8ea2-95b90a70ef3d)
+[![Horcrux Useful Commands](https://img.shields.io/badge/-Horcrux%20Useful%20Commands-A86A24?style=for-the-badge&labelColor=321A0C&logoColor=white)](docs/useful-commands.md)
 
+[![Horcrux Metrics with Grafana & Prometheus](https://img.shields.io/badge/-Horcrux%20Metrics%20with%20Grafana%20%26%20Prometheus-321A0C?style=for-the-badge&labelColor=060502&logoColor=FFA500)](docs/metrics-grafana-prometheus.md)
+
+[![Horcrux Dashboard Metrics Reference](https://img.shields.io/badge/-Horcrux%20Dashboard%20Metrics%20Reference-321A0C?style=for-the-badge&labelColor=060502&logoColor=FFA500)](docs/metrics-dashboard.md)
+
+---
+
+## Repository structure
+
+```
+cumulo-horcrux/
+├── README.md
+├── docs/
+│   ├── installation-guide.md
+│   ├── modify-architecture.md
+│   ├── add-chain-multichain.md
+│   ├── useful-commands.md
+│   ├── metrics-grafana-prometheus.md
+│   └── metrics-dashboard.md
+└── grafana/
+    └── cumulo-horcrux-dashboard.json
+```
+
+---
+
+## Grafana dashboard
+
+The Cumulo Horcrux Monitoring dashboard is available in [`grafana/cumulo-horcrux-dashboard.json`](grafana/cumulo-horcrux-dashboard.json).
+
+It uses a job-based variable to select which cosigner cluster to monitor, and displays metrics per chain automatically — no changes needed when adding or removing chains. See [Horcrux Metrics with Grafana & Prometheus](docs/metrics-grafana-prometheus.md) for setup instructions.
+
+<!-- imagen: captura del dashboard Cumulo Horcrux Monitoring -->
+
+---
+
+## Cumulo.Pro
+
+[cumulo.pro](https://cumulo.pro) · Stake with us.
