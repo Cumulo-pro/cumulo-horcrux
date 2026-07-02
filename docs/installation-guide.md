@@ -93,7 +93,7 @@ Files generated:
 ./cosigner_3/<chain-id>_shard.json
 ```
 
-### 3a️⃣ Verify shard IDs before distributing
+### 3a️ Verify shard IDs before distributing
 
 Confirm that each shard file has the expected `id` before copying to the cosigner nodes:
 
@@ -104,7 +104,7 @@ cat cosigner_1/<chain-id>_shard.json | \
 
 Expected output for `cosigner_1`: `shardID: 1`, for `cosigner_2`: `shardID: 2`, etc.
 
-### 3b️⃣ Distribute shards to each cosigner
+### 3b️ Distribute shards to each cosigner
 
 ```bash
 scp cosigner_1/<chain-id>_shard.json <user>@<signer-ip-1>:~/.horcrux/
