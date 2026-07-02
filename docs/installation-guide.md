@@ -15,8 +15,7 @@ The reference architecture for Cumulo's Horcrux setup uses a **2-of-3 threshold 
 
 Each sentry connects to the cosigner cluster via a private network on port `:1234`. The cosigners communicate with each other on port `:2222` using ECIES-encrypted channels.
 
-<!-- imagen: arquitectura general sentry → cosigner cluster -->
-
+![Shard generation and distribution](assets/shard-distribution.svg)
 ---
 
 ## Requirements
