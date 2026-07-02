@@ -1,0 +1,68 @@
+<svg width="100%" viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Metrics pipeline — cosigners to Prometheus to Grafana</title>
+<desc>Flujo de métricas desde los tres cosigners de Horcrux hacia Prometheus y finalmente Grafana</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <style>
+    text { font-family: monospace, sans-serif; fill: #FEFAE0; }
+    .label-sm { font-size: 11px; fill: #A86A24; }
+    .label-md { font-size: 13px; font-weight: 600; fill: #FEFAE0; }
+    .label-dim { font-size: 11px; fill: #606C37; }
+    .label-warn { font-size: 11px; fill: #E85D24; }
+  </style>
+</defs>
+
+<!-- Background -->
+<rect width="680" height="300" fill="#060502"/>
+
+<!-- Label above cosigners -->
+<text class="label-dim" x="90" y="44" text-anchor="middle">Horcrux cosigners</text>
+
+<!-- Cosigner nodes -->
+<rect x="20" y="60" width="140" height="56" rx="8" fill="#2a1a06" stroke="#FFA500" stroke-width="0.8"/>
+<text class="label-md" x="90" y="84" text-anchor="middle" dominant-baseline="central">Cosigner 1</text>
+<text class="label-sm" x="90" y="102" text-anchor="middle" dominant-baseline="central">:6001/metrics</text>
+
+<rect x="20" y="134" width="140" height="56" rx="8" fill="#2a1a06" stroke="#FFA500" stroke-width="0.8"/>
+<text class="label-md" x="90" y="158" text-anchor="middle" dominant-baseline="central">Cosigner 2</text>
+<text class="label-sm" x="90" y="176" text-anchor="middle" dominant-baseline="central">:6001/metrics</text>
+
+<rect x="20" y="208" width="140" height="56" rx="8" fill="#2a1a06" stroke="#FFA500" stroke-width="0.8"/>
+<text class="label-md" x="90" y="232" text-anchor="middle" dominant-baseline="central">Cosigner 3</text>
+<text class="label-sm" x="90" y="250" text-anchor="middle" dominant-baseline="central">:6001/metrics</text>
+
+<!-- Arrows cosigners → Prometheus -->
+<line x1="160" y1="88"  x2="254" y2="162" stroke="#606C37" stroke-width="0.5" marker-end="url(#arrow)"/>
+<line x1="160" y1="162" x2="254" y2="172" stroke="#606C37" stroke-width="0.5" marker-end="url(#arrow)"/>
+<line x1="160" y1="236" x2="254" y2="182" stroke="#606C37" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Scrape label -->
+<text class="label-sm" x="208" y="136" text-anchor="middle">scrape</text>
+<text class="label-sm" x="208" y="150" text-anchor="middle">:6001</text>
+
+<!-- Prometheus -->
+<text class="label-dim" x="338" y="112" text-anchor="middle">Time series storage</text>
+<rect x="258" y="128" width="160" height="88" rx="8" fill="#2a1208" stroke="#E85D24" stroke-width="0.5"/>
+<text class="label-md" x="338" y="158" text-anchor="middle" dominant-baseline="central">Prometheus</text>
+<text class="label-sm" x="338" y="178" text-anchor="middle" dominant-baseline="central">scrape_interval: 3s</text>
+<text class="label-sm" x="338" y="196" text-anchor="middle" dominant-baseline="central">labels: chain · share</text>
+
+<!-- Arrow Prometheus → Grafana -->
+<line x1="418" y1="172" x2="494" y2="172" stroke="#606C37" stroke-width="0.5" marker-end="url(#arrow)"/>
+<text class="label-sm" x="456" y="162" text-anchor="middle">PromQL</text>
+
+<!-- Grafana -->
+<text class="label-dim" x="578" y="90" text-anchor="middle">Visualization</text>
+<rect x="498" y="106" width="160" height="132" rx="8" fill="#1a3a30" stroke="#2a6b55" stroke-width="0.5"/>
+<text class="label-md" x="578" y="138" text-anchor="middle" dominant-baseline="central">Grafana</text>
+<text class="label-sm" x="578" y="158" text-anchor="middle" dominant-baseline="central">dashboard</text>
+<text class="label-sm" x="578" y="178" text-anchor="middle" dominant-baseline="central">var: $job</text>
+<text class="label-sm" x="578" y="198" text-anchor="middle" dominant-baseline="central">max by (chain)</text>
+<text class="label-sm" x="578" y="218" text-anchor="middle" dominant-baseline="central">per-chain colors</text>
+
+<!-- Firewall note -->
+<text class="label-warn" x="180" y="284" text-anchor="middle">firewall: allow :6001 from Prometheus IP only</text>
+
+</svg>
