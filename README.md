@@ -2,6 +2,8 @@
 
 Horcrux threshold signing architecture, deployment guides, and Grafana metrics dashboard for Cumulo's CometBFT validators.
 
+<img width="1024" height="1024" alt="horcrux logo" src="https://github.com/user-attachments/assets/663544ec-50b8-4963-bd64-5c0eef3d7100" />
+
 ## What is Horcrux?
 
 Horcrux is a multi-party-computation (MPC) signing service for CometBFT nodes. It enhances security and availability by distributing the validator private key among multiple cosigner nodes using Shamir's Secret Sharing, thereby preventing double signing and eliminating single points of failure. The project uses Raft for leader election and consensus among cosigners.
