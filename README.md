@@ -12,7 +12,7 @@ Cumulo runs a **2-of-3 threshold signing** setup across three independent cosign
 
 +info https://github.com/strangelove-ventures/horcrux
 
-
+![Horcrux Architecture](docs/assets/horcrux-architecture.svg)
 ---
 
 ## Documentation
