@@ -4,6 +4,7 @@ This guide explains how to configure Prometheus to scrape Horcrux metrics from y
 
 +info https://github.com/strangelove-ventures/horcrux
 
+![Metrics pipeline](assets/metrics-pipeline.svg)
 ---
 
 ## 1️⃣ Enable the metrics port on each cosigner node
