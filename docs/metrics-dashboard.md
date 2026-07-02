@@ -48,7 +48,7 @@ These metrics reflect the active signing state of the cluster. They are the prim
 
 The last block height for which a precommit was signed. This value should increase continuously with each new block. A stalled height indicates the cosigner cluster is not signing for that chain.
 
-The dashboard shows `max by (chain)` — one value per chain, representing the most recent height signed across all cosigners.
+The dashboard shows `max by (chain)`, one value per chain, representing the most recent height signed across all cosigners.
 
 | Expected behavior | Problem indicator |
 |------------------|-------------------|
@@ -62,7 +62,7 @@ The dashboard shows `max by (chain)` — one value per chain, representing the m
 
 The consensus round in which the last precommit was signed. Rounds are iterations within the same block height when the network needs additional attempts to reach consensus.
 
-A value of **0** means consensus was reached in the first round, which is ideal. Higher values are not necessarily a problem — they reflect network-level consensus behavior, not cosigner issues — but sustained high rounds may warrant investigation.
+A value of **0** means consensus was reached in the first round, which is ideal. Higher values are not necessarily a problem, they reflect network-level consensus behavior, not cosigner issues, but sustained high rounds may warrant investigation.
 
 | Expected value | Note |
 |---------------|------|
@@ -99,9 +99,9 @@ Time in seconds since the last local signing process completed on a cosigner. Th
 
 Each block, cosigners exchange ephemeral nonce secrets (one-time cryptographic values) before signing. This metric measures the time since the last exchange on a given cosigner.
 
-This value **should not exceed the block time**. If it does, a cosigner missed a block cycle — this may indicate a Raft joining issue or connectivity problem between cosigners.
+This value **should not exceed the block time**. If it does, a cosigner missed a block cycle, this may indicate a Raft joining issue or connectivity problem between cosigners.
 
-The dashboard shows `max by (chain)` — the worst-case value per chain across all cosigners.
+The dashboard shows `max by (chain)`, the worst-case value per chain across all cosigners.
 
 | Expected behavior | Problem indicator |
 |------------------|-------------------|
@@ -135,7 +135,7 @@ These metrics reveal problems with cosigner communication and are the key indica
 
 `signer_missed_ephemeral_shares`
 
-Number of consecutive ephemeral shares missed from a specific peer cosigner, as seen by the Raft leader. Occasional misses are normal. A sustained increase indicates the leader cannot reach that cosigner — this points to connectivity, latency, or resource issues on the affected peer.
+Number of consecutive ephemeral shares missed from a specific peer cosigner, as seen by the Raft leader. Occasional misses are normal. A sustained increase indicates the leader cannot reach that cosigner, this points to connectivity, latency, or resource issues on the affected peer.
 
 The dashboard shows one line per peer, identified by `peerid` (the cosigner's p2p address).
 
@@ -163,7 +163,7 @@ Total times a cosigner requested nonces when its local cache was exhausted. May 
 
 ## Signing performance metrics
 
-These metrics quantify how quickly the cluster produces signatures. They are most useful when diagnosing latency issues. Available only on the **Raft leader** — followers report `NaN`.
+These metrics quantify how quickly the cluster produces signatures. They are most useful when diagnosing latency issues. Available only on the **Raft leader**, followers report `NaN`.
 
 ---
 
@@ -171,7 +171,7 @@ These metrics quantify how quickly the cluster produces signatures. They are mos
 
 `signer_sign_block_threshold_lag_seconds`
 
-Time in seconds for the cluster to collect signatures from the minimum required cosigners (2-of-3). The dashboard uses the **p90 quantile** — 90% of blocks should be signed within this time. Lower values indicate a more responsive cluster.
+Time in seconds for the cluster to collect signatures from the minimum required cosigners (2-of-3). The dashboard uses the **p90 quantile**, 90% of blocks should be signed within this time. Lower values indicate a more responsive cluster.
 
 ---
 
@@ -179,7 +179,7 @@ Time in seconds for the cluster to collect signatures from the minimum required 
 
 `signer_sign_block_cosigner_lag_seconds`
 
-Time in seconds to collect signatures from **all** cosigners after the threshold has been reached. Should be very low — high values indicate latency between the leader and a specific cosigner.
+Time in seconds to collect signatures from **all** cosigners after the threshold has been reached. Should be very low, high values indicate latency between the leader and a specific cosigner.
 
 ---
 
@@ -209,7 +209,7 @@ Total number of times each cosigner has been elected as the Raft leader. Should 
 
 `signer_total_raft_not_leader`
 
-Total number of times a cosigner acted as a Raft follower, forwarding its signature to the leader rather than coordinating signing itself. Complements `signer_total_raft_leader` — the two values across all cosigners should add up consistently.
+Total number of times a cosigner acted as a Raft follower, forwarding its signature to the leader rather than coordinating signing itself. Complements `signer_total_raft_leader`, the two values across all cosigners should add up consistently.
 
 ---
 
@@ -217,7 +217,7 @@ Total number of times a cosigner acted as a Raft follower, forwarding its signat
 
 `signer_total_raft_leader_election_timeout`
 
-Total number of times a Raft leader election failed because not enough peers responded within the timeout. Should always be **0**. Any increase indicates cluster instability — likely connectivity issues between cosigners or a cosigner being unreachable.
+Total number of times a Raft leader election failed because not enough peers responded within the timeout. Should always be **0**. Any increase indicates cluster instability, likely connectivity issues between cosigners or a cosigner being unreachable.
 
 | Expected value | Action if non-zero |
 |---------------|-------------------|
@@ -243,7 +243,7 @@ These metrics track TCP connections between cosigners and their sentry/validator
 
 `signer_sentry_connect_tries`
 
-Number of consecutive TCP connection attempts from a cosigner to a specific sentry node. Resets to 0 after a successful connection. A sustained high value indicates the cosigner cannot reach that sentry — check firewall rules and sentry availability.
+Number of consecutive TCP connection attempts from a cosigner to a specific sentry node. Resets to 0 after a successful connection. A sustained high value indicates the cosigner cannot reach that sentry, check firewall rules and sentry availability.
 
 The dashboard shows per cosigner per sentry: `{{instance}} → {{node}}`.
 
