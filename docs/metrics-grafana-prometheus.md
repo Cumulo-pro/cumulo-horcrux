@@ -49,7 +49,7 @@ On the Prometheus server, edit the configuration file:
 sudo vi /etc/prometheus/prometheus.yml
 ```
 
-Add one job per Horcrux cluster. Each target entry must include `chain` and `share` labels — these are used by the dashboard to filter and color metrics per chain and cosigner.
+Add one job per Horcrux cluster. Each target entry must include `chain` and `share` labels: these are used by the dashboard to filter and color metrics per chain and cosigner.
 
 The same cosigner IPs can appear multiple times if they sign multiple chains:
 
@@ -135,7 +135,7 @@ https://github.com/Cumulo-pro/cumulo-horcrux/blob/main/grafana/cumulo-horcrux-da
 
 In Grafana: **Dashboards → Import → Upload JSON file**
 
-When prompted, assign your Prometheus datasource. The dashboard uses the standard `__inputs` mechanism — Grafana will ask you to map `DS_PROMETHEUS` to your datasource on import.
+When prompted, assign your Prometheus datasource. The dashboard uses the standard `__inputs` mechanism: Grafana will ask you to map `DS_PROMETHEUS` to your datasource on import.
 
 <!-- imagen: pantalla de import de Grafana mostrando el selector de datasource -->
 
@@ -145,16 +145,16 @@ When prompted, assign your Prometheus datasource. The dashboard uses the standar
 
 Once imported, the dashboard has two variables in the top bar:
 
-- **Datasource** — your Prometheus instance
-- **Job** — select which Horcrux cluster to monitor (e.g. `horcrux_cosmoshub`, `horcrux_celestia`)
+- **Datasource**: your Prometheus instance
+- **Job**: select which Horcrux cluster to monitor (e.g. `horcrux_cosmoshub`, `horcrux_celestia`)
 
 The dashboard is organized in three sections:
 
-**Metrics that don't always correspond to block time** — signing timestamps and last signed height per chain. These metrics may fluctuate beyond block time without indicating a problem.
+**Metrics that don't always correspond to block time**: signing timestamps and last signed height per chain. These metrics may fluctuate beyond block time without indicating a problem.
 
-**Watching For Cosigner Trouble** — precommit rounds and missed ephemeral shares. These are the key indicators of cosigner connectivity issues.
+**Watching For Cosigner Trouble**: precommit rounds and missed ephemeral shares. These are the key indicators of cosigner connectivity issues.
 
-**Checking Signing Performance** — threshold lag and cosigner lag metrics. Expand this section when something looks wrong in the sections above.
+**Checking Signing Performance**: threshold lag and cosigner lag metrics. Expand this section when something looks wrong in the sections above.
 
 <!-- imagen: captura del dashboard Cumulo con datos reales -->
 
@@ -164,7 +164,7 @@ The dashboard is organized in three sections:
 
 **Job variable is empty in the dashboard**
 
-The variable queries `label_values(signer_last_precommit_height, job)` — if it returns nothing, Prometheus is not receiving metrics from the cosigners. Check:
+The variable queries `label_values(signer_last_precommit_height, job)`: if it returns nothing, Prometheus is not receiving metrics from the cosigners. Check:
 
 ```bash
 # From Prometheus server
@@ -175,7 +175,7 @@ If the curl times out or fails, the firewall on the cosigner is blocking access.
 
 **Metrics show only one chain despite multiple chains configured**
 
-Each chain needs its own target entry in `prometheus.yml` with the correct `chain` label. The same cosigner IP can appear multiple times — once per chain it signs.
+Each chain needs its own target entry in `prometheus.yml` with the correct `chain` label. The same cosigner IP can appear multiple times: once per chain it signs.
 
 **`debugAddr` not found in config.yaml**
 
