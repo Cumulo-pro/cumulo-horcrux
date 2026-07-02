@@ -1,6 +1,6 @@
 # Adding a chain to an existing multi-chain Horcrux setup
 
-This guide explains how to integrate a new chain into a Horcrux cosigner cluster that is already running and signing for one or more chains. The process does not require regenerating ECIES keys or reinitializing the full configuration — only the Ed25519 shards for the new chain need to be created.
+This guide explains how to integrate a new chain into a Horcrux cosigner cluster that is already running and signing for one or more chains. The process does not require regenerating ECIES keys or reinitializing the full configuration, only the Ed25519 shards for the new chain need to be created.
 
 +info https://github.com/strangelove-ventures/horcrux
 
@@ -16,7 +16,7 @@ In a multi-chain Horcrux setup, all cosigners share a single `config.yaml` and a
 
 Adding a new chain means distributing new shard files, updating `config.yaml` on all cosigners, and restarting Horcrux.
 
-> ⚠️ **Important:** Usernames and paths may differ per cosigner node depending on provider and server configuration. Always confirm the actual username on each node before running remote commands — do not assume a uniform `ubuntu` or `$USER`.
+> ⚠️ **Important:** Usernames and paths may differ per cosigner node depending on provider and server configuration. Always confirm the actual username on each node before running remote commands   do not assume a uniform `ubuntu` or `$USER`.
 
 ---
 
@@ -57,7 +57,7 @@ ls -R
 *./cosigner_3:*
 *<NEW_CHAIN_ID>_shard.json*
 
-✔️ Move `priv_validator_key.json` to a safe location — it is no longer needed on this machine.
+✔️ Move `priv_validator_key.json` to a safe location   it is no longer needed on this machine.
 
 ---
 
@@ -76,7 +76,7 @@ Expected output for `cosigner_1`: `shardID: 1`, for `cosigner_2`: `shardID: 2`, 
 
 ## 3️⃣ Distribute shards to each cosigner node
 
-Copy each `cosigner_N/<CHAIN_ID>_shard.json` into `~/.horcrux/` on the corresponding node. The existing `ecies_keys.json` is reused — do not replace it.
+Copy each `cosigner_N/<CHAIN_ID>_shard.json` into `~/.horcrux/` on the corresponding node. The existing `ecies_keys.json` is reused   do not replace it.
 
 ```
 scp cosigner_1/<CHAIN_ID>_shard.json <user-signer1>@<ip-signer1>:~/.horcrux/
