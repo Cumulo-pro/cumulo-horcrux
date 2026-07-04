@@ -1,6 +1,6 @@
 # Horcrux Dashboard Metrics Reference
 
-Reference guide for all metrics exposed by Horcrux and displayed in the [Cumulo Horcrux Monitoring dashboard](../grafana/cumulo-horcrux-dashboard.json). Metrics are grouped by the dashboard sections in which they appear.
+Reference guide for all metrics exposed by Horcrux and displayed in the [Cumulo Horcrux Monitoring dashboard](https://github.com/Cumulo-pro/cumulo-horcrux/blob/main/grafana/Horcrux%20Monitoring%20%C2%B7%20Cumulo.Pro-1783181889803.json). Metrics are grouped by the dashboard sections in which they appear.
 
 +info https://github.com/strangelove-ventures/horcrux
 
