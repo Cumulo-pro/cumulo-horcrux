@@ -53,7 +53,7 @@ cumulo-horcrux/
 
 ## Grafana dashboard
 
-The Cumulo Horcrux Monitoring dashboard is available in [`grafana/cumulo-horcrux-dashboard.json`](grafana/cumulo-horcrux-dashboard.json).
+The Cumulo Horcrux Monitoring dashboard is available in [grafana/cumulo-horcrux-dashboard.json](https://github.com/Cumulo-pro/cumulo-horcrux/blob/main/grafana/Horcrux%20Monitoring%20%C2%B7%20Cumulo.Pro-1783181889803.json).
 
 It uses a job-based variable to select which cosigner cluster to monitor, and displays metrics per chain automatically — no changes needed when adding or removing chains. See [Metrics with Grafana & Prometheus](docs/metrics-grafana-prometheus.md) for setup instructions.
 
